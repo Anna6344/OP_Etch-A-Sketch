@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div {
+  display: flex;
+  border: 1px solid black;
+}
+
+#grid {
+  flex-direction: column;
+}
+
+.raw {
+  display: flex;
+}
+
+.cell {
+  display: flex;
+  border-bottom: none;
+}
