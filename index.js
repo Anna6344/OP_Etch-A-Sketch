@@ -16,7 +16,7 @@ function drawGrid (gridSide){
 		while (j < gridSide) {
 			const cell = document.createElement('div');
 			cell.classList.add('cell');
-			cell.style.backgroundColor = '#ffffff';
+			cell.style.backgroundColor = 'rgb(255, 255, 255)';
 			cell.style.width = 100 / gridSide + 'vh';
 			currentRaw.appendChild(cell);
 			console.log(j);
@@ -36,6 +36,26 @@ function getRandomColor() {
   return color;
 }
 
+function darkenColor(curColor) {
+	colSubStr = curColor.slice(4, -1);
+	colElem = colSubStr.split(",");
+	newColArr = colElem.map(decrPerc);
+	newColStr = newColArr.join(', ');
+	console.log(newColStr);
+	newColor = `rgb(${newColStr})`;
+	return newColor;
+}
+
+function decrPerc(num) {
+	let delta = Math.round(Number(num) / 3);
+	let newNum = Number(num) - delta;
+	if (newNum <= 4) {
+		newNum = 0;
+	};
+	console.log(newNum);
+	return newNum;
+}
+
 btn.addEventListener('click', () => {
 	while (grid.hasChildNodes()) {
 		grid.removeChild(grid.firstChild);
@@ -49,8 +69,13 @@ btn.addEventListener('click', () => {
 		const cells = document.querySelectorAll('.cell');
 		cells.forEach((cell) => {
 				cell.addEventListener('mouseover', () => {
-					cell.style.backgroundColor = `${getRandomColor()}`;
-					});
+					if (cell.style.backgroundColor === 'rgb(255, 255, 255)') {
+						cell.style.backgroundColor = `${getRandomColor()}`;
+					} else {
+						let curColor = cell.style.backgroundColor; 
+						cell.style.backgroundColor = `${darkenColor(curColor)}`;
+					}
+				});
 		});
-	}
+	};
 });
