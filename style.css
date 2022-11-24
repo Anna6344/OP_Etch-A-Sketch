@@ -21,3 +21,13 @@ div {
   display: flex;
   border-bottom: none;
 }
+
+#btn {
+  margin: 30px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+#btndiv {
+  width: 100%;
+}
