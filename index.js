@@ -16,6 +16,7 @@ function drawGrid (gridSide){
 		while (j < gridSide) {
 			const cell = document.createElement('div');
 			cell.classList.add('cell');
+			cell.style.backgroundColor = '#ffffff';
 			cell.style.width = 100 / gridSide + 'vh';
 			currentRaw.appendChild(cell);
 			console.log(j);
@@ -25,6 +26,15 @@ function drawGrid (gridSide){
 		j = 0;
 	}
 };
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let k = 0; k < 6; k++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 
 btn.addEventListener('click', () => {
 	while (grid.hasChildNodes()) {
@@ -39,12 +49,8 @@ btn.addEventListener('click', () => {
 		const cells = document.querySelectorAll('.cell');
 		cells.forEach((cell) => {
 				cell.addEventListener('mouseover', () => {
-					cell.style.backgroundColor = 'black';
-				});
+					cell.style.backgroundColor = `${getRandomColor()}`;
+					});
 		});
 	}
 });
-
-
-
-
